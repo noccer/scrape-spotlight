@@ -2,7 +2,7 @@
 
 const imageContainer = $('images');
 
-const pageSize = 2;
+const pageSize = 100;
 const url = 'https://spotlight.it-notes.ru/wp-json/wp/v2/posts?per_page=' + pageSize;
 
 let counter = 0;
