@@ -2,7 +2,7 @@
 
 const imageContainer = $('images');
 
-const pageSize = 100;
+const pageSize = 2;
 const url = 'https://spotlight.it-notes.ru/wp-json/wp/v2/posts?per_page=' + pageSize;
 
 let counter = 0;
@@ -41,6 +41,14 @@ const dataCallback = (data) => {
 const getImageData = () => {
     if (counter === 0) {
         counter++;
+        $('#button')
+            .html('Scraping, please wait...')
+            .attr('disabled', 'true')
+            .css({
+                cursor: 'not-allowed',
+                backgroundColor: '#4CAF50',
+                border: '2px solid #fff',
+            });
         var getUrl;
         getUrl = $.ajax({
             url,
