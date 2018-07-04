@@ -12,11 +12,20 @@
     ></script>
     
     <title>Scraping Windows Spotlight images from spotlight.it-notes.ru</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46052015-11"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'UA-46052015-11');
+    </script>
 </head>
 <body>
     <button id="button" onclick="getImageData()">Scrape</button>
     <p class="paragraph">images from
-        <a href="https://spotlight.it-notes.ru">spotlight.it-notes.ru</a>
+        <a href="https://spotlight.it-notes.ru" target="_blank">spotlight.it-notes.ru</a>
     </p>
     <div id="images"></div>
     <script src="./script.js"></script>
