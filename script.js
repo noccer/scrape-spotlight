@@ -3,7 +3,7 @@
 const imageContainer = $('images');
 
 const pageSize = 100;
-const url = 'https://spotlight.it-notes.ru/wp-json/wp/v2/posts?per_page=' + pageSize;
+let pageNumber = 1;
 
 let counter = 0;
 let totalPosts;
@@ -20,7 +20,15 @@ const getImageString = (item) => {
 
 const dataCallback = (data) => {
     if (data) {
-        $('#button').remove();
+        $('#images').empty();
+        $('#button')
+            .html('Get ' + pageSize + ' more')
+            .removeAttr('disabled')
+            .css({
+                cursor: 'pointer',
+                backgroundColor: '#212121',
+                border: '2px solid #fff',
+            });
         for (let i = 0; i < data.length; i++) {
             const finalImageString = getImageString(data[i]);
 
@@ -35,10 +43,13 @@ const dataCallback = (data) => {
             aTag.append(image);
             $('#images').append(aTag);
         }
+        counter = 0;
+        pageNumber += 1;
     }
 }
 
 const getImageData = () => {
+    const url = 'https://spotlight.it-notes.ru/wp-json/wp/v2/posts?per_page=' + pageSize + '&page=' + pageNumber;
     if (counter === 0) {
         counter++;
         $('#button')
@@ -63,4 +74,4 @@ const getImageData = () => {
     }
 }
 
-$('#button').on('click', getImageData);
+$('#button').on('click', function() {getImageData()});
